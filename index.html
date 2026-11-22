@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090910">
+  <meta name="description" content="VADIM VISUAL — визуальный PvP-проект для Minecraft 1.21.4. Клиент находится в разработке.">
+  <title>VADIM VISUAL — в разработке</title>
+  <style>
+    :root { color-scheme: dark; --bg:#090910; --panel:#12121d; --line:#28283b; --text:#f4f3ff; --muted:#aaa8c1; --purple:#9b7bff; --cyan:#6ee7ff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--text); background:radial-gradient(ellipse at 50% -15%,#30205a 0,transparent 45%),var(--bg); }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1080px, calc(100% - 36px)); margin:auto; }
+    header { display:flex; align-items:center; justify-content:space-between; padding:22px 0; border-bottom:1px solid #ffffff12; }
+    .brand { display:flex; align-items:center; gap:11px; font-weight:850; letter-spacing:.11em; font-size:14px; }
+    .mark { width:34px; height:34px; display:grid; place-items:center; border-radius:11px; background:linear-gradient(135deg,var(--purple),#5a45c7); box-shadow:0 0 28px #9b7bff40; font-weight:900; }
+    .nav { color:var(--muted); font-size:13px; }
+    .nav a:hover { color:white; }
+    .hero { text-align:center; padding:92px 0 72px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; padding:8px 12px; border:1px solid #9b7bff55; border-radius:999px; color:#d7ccff; background:#9b7bff12; font-size:12px; font-weight:700; letter-spacing:.06em; }
+    .dot { width:7px; height:7px; border-radius:50%; background:#b6ff9b; box-shadow:0 0 12px #b6ff9b; }
+    h1 { margin:24px 0 16px; font-size:clamp(42px,8vw,82px); line-height:.98; letter-spacing:-.065em; }
+    h1 span { background:linear-gradient(100deg,#fff 15%,#c7b8ff 55%,#8beaff); color:transparent; background-clip:text; -webkit-background-clip:text; }
+    .lead { max-width:650px; margin:0 auto; color:var(--muted); line-height:1.75; font-size:clamp(15px,2vw,18px); }
+    .status-card { display:flex; align-items:center; justify-content:space-between; gap:18px; text-align:left; max-width:620px; margin:34px auto 0; padding:19px 21px; border:1px solid var(--line); border-radius:17px; background:#11111bd9; }
+    .status-label { color:var(--muted); font-size:12px; margin-bottom:6px; }
+    .status-value { font-size:16px; font-weight:800; }
+    .badge { flex-shrink:0; border:1px solid #e9bd6d50; color:#ffd991; background:#e9bd6d12; border-radius:9px; padding:9px 11px; font-size:12px; font-weight:800; }
+    .section { padding:35px 0 70px; }
+    .section-head { margin-bottom:25px; }
+    .kicker { color:var(--purple); font-size:11px; letter-spacing:.18em; font-weight:850; text-transform:uppercase; }
+    h2 { margin:9px 0; font-size:clamp(26px,4vw,36px); letter-spacing:-.035em; }
+    .sub { color:var(--muted); line-height:1.7; max-width:620px; font-size:14px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .feature { padding:22px; min-height:170px; border:1px solid var(--line); border-radius:17px; background:linear-gradient(145deg,#151522,#0e0e17); }
+    .icon { width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:#9b7bff18; border:1px solid #9b7bff35; color:#d5c8ff; font-size:18px; }
+    .feature h3 { margin:17px 0 8px; font-size:16px; }
+    .feature p { margin:0; color:var(--muted); line-height:1.65; font-size:13px; }
+    .release { display:grid; grid-template-columns:1.2fr .8fr; gap:16px; }
+    .release-main,.release-side { border:1px solid var(--line); border-radius:18px; padding:25px; background:#11111bd9; }
+    .release-main p,.release-side p { color:var(--muted); line-height:1.7; font-size:14px; }
+    .release-title { font-size:23px; font-weight:850; margin:12px 0; }
+    .download-disabled { display:inline-flex; align-items:center; gap:10px; padding:13px 16px; border:1px solid #373747; border-radius:12px; color:#9290a5; background:#1a1a25; font-size:13px; font-weight:800; cursor:not-allowed; }
+    .tag { display:inline-block; border:1px solid var(--line); padding:6px 9px; border-radius:8px; font-size:11px; color:#d3d0e8; background:#ffffff05; }
+    .release-side h3 { margin:0 0 14px; font-size:15px; }
+    .spec { display:flex; justify-content:space-between; gap:14px; padding:11px 0; border-bottom:1px solid #ffffff0d; font-size:13px; }
+    .spec:last-child { border:0; }
+    .spec span:first-child { color:var(--muted); }
+    .spec span:last-child { text-align:right; font-weight:700; }
+    .notice { margin-top:18px; padding:15px 17px; border-left:3px solid var(--purple); background:#9b7bff0d; color:#c9c5dc; font-size:13px; line-height:1.7; border-radius:0 10px 10px 0; }
+    footer { border-top:1px solid #ffffff12; padding:25px 0 32px; color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+    .reveal { animation:rise .75s both; }
+    @keyframes rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    @media (max-width:720px) { .hero { padding:70px 0 52px; } .grid { grid-template-columns:1fr; } .feature { min-height:0; } .release { grid-template-columns:1fr; } .status-card { align-items:flex-start; flex-direction:column; } .nav { display:none; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; scroll-behavior:auto!important; } }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="#top" aria-label="VADIM VISUAL — главная"><span class="mark">V</span><span>VADIM VISUAL</span></a>
+    <nav class="nav"><a href="#about">О проекте</a>　·　<a href="#features">Возможности</a>　·　<a href="#release">Релиз</a></nav>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap reveal">
+      <div class="eyebrow"><span class="dot"></span> ПРОЕКТ В РАЗРАБОТКЕ</div>
+      <h1><span>VADIM VISUAL</span></h1>
+      <p class="lead">Авторский визуальный PvP-проект для Minecraft. Эффекты, удобный HUD и настройки под свой стиль игры — всё это планируется объединить в одном клиентском моде.</p>
+      <div class="status-card">
+        <div><div class="status-label">ТЕКУЩИЙ СТАТУС</div><div class="status-value">Разработка продолжается</div></div>
+        <div class="badge">JAR ЕЩЁ НЕ ВЫПУЩЕН</div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="about">
+      <div class="section-head"><div class="kicker">О проекте</div><h2>Создаётся для PvP</h2><p class="sub">VADIM VISUAL задуман как визуальный мод с настраиваемыми эффектами и интерфейсом. Проект пока не готов к установке: готового файла .jar ещё нет.</p></div>
+    </section>
+
+    <section class="section wrap" id="features">
+      <div class="section-head"><div class="kicker">Планируемые возможности</div><h2>Что разрабатывается</h2><p class="sub">Это планы проекта, а не обещание, что все функции уже работают.</p></div>
+      <div class="grid">
+        <article class="feature"><div class="icon">✦</div><h3>Эффекты устранения</h3><p>Разные стили частиц и визуальная обратная связь после победы над противником.</p></article>
+        <article class="feature"><div class="icon">▦</div><h3>Настраиваемый HUD</h3><p>Показатели FPS, координаты и другие игровые данные с возможностью настройки.</p></article>
+        <article class="feature"><div class="icon">◈</div><h3>Визуальные настройки</h3><p>Меню параметров, выбор эффектов и сохранение пользовательских настроек.</p></article>
+        <article class="feature"><div class="icon">☼</div><h3>Окружение и огонь</h3><p>В планах — дополнительные варианты неба и уменьшенный огонь на экране.</p></article>
+        <article class="feature"><div class="icon">↗</div><h3>Производительность</h3><p>Работа над лёгкостью мода и удобством использования без лишней нагрузки.</p></article>
+        <article class="feature"><div class="icon">⚙</div><h3>Собственное меню</h3><p>Единое место для визуальных параметров и будущих функций проекта.</p></article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="release">
+      <div class="section-head"><div class="kicker">Релиз</div><h2>Когда можно будет скачать?</h2><p class="sub">Дата выхода пока не объявлена. Страница будет информировать о статусе проекта без выдуманной даты релиза.</p></div>
+      <div class="release">
+        <div class="release-main">
+          <span class="tag">РАННЯЯ РАЗРАБОТКА</span>
+          <div class="release-title">Сборка пока недоступна</div>
+          <p>Файл клиента <strong>.jar</strong> ещё не выпущен. Не скачивай случайные файлы, которые выдают себя за официальный релиз VADIM VISUAL.</p>
+          <span class="download-disabled" aria-disabled="true">🔒　Скачать — скоро</span>
+          <div class="notice">Важно: наличие сайта не означает, что мод уже готов. О публикации сборки можно сообщить отдельно, когда она будет создана и проверена.</div>
+        </div>
+        <aside class="release-side">
+          <h3>Информация о проекте</h3>
+          <div class="spec"><span>Проект</span><span>VADIM VISUAL</span></div>
+          <div class="spec"><span>Игра</span><span>Minecraft Java</span></div>
+          <div class="spec"><span>Версия</span><span>1.21.4</span></div>
+          <div class="spec"><span>Загрузчик</span><span>Fabric</span></div>
+          <div class="spec"><span>Статус .jar</span><span style="color:#ffd991">Не выпущен</span></div>
+          <div class="spec"><span>Дата релиза</span><span>Не объявлена</span></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap"><span>© 2026 VADIM VISUAL · Независимый проект</span><span>Неофициальный проект, не связан с Mojang или Microsoft.</span></footer>
+</body>
+</html>
